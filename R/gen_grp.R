@@ -1,4 +1,5 @@
 # generate group with levels
+#' @export gen_grp
 gen_grp <- function(var_name, var_levels, units=NULL) {
   if(is.null(units)) {
     units <- rep("", length(var_levels))
