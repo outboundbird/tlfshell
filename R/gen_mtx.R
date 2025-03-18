@@ -30,12 +30,24 @@ mtx_chg <- function(chg, group){
 }
 
 
-mtx_grp <- function(group) {
-  c(blanks, levels(group))
+mtx_list <- function(list, group){
+  list_attr <- get_attr(list)
+  list_rows <- c(list_attr("names"), list_attr("id"))
+  list_cols <- matrix(
+    rep(c(blanks, list_attr("table_txt")), nlevels(group)),
+    ncol = nlevels(group)
+  )
+  cbind(list_rows, list_cols)
 }
 
+mtx_grp <- function(group, select=NULL) {
+  group_attr <- get_attr(group)
+  subline <- group_attr(select)
+  rbind(c(blanks, levels(group)),
+        c(blanks, subline))
+}
 
-gen_mtx <- function(..., col_groups) {
+gen_mtx <- function(..., col_groups =NULL) {
   rbind(...) %>%
     data.frame() %>%
     setNames(col_groups)
@@ -44,6 +56,7 @@ gen_mtx <- function(..., col_groups) {
 # example
 faat <- gen_num("fAAT")
 aaat <- gen_num("aAAT")
+pt <- gen_list("Patient", 3)
 bmi <- gen_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"))
 sex <- gen_cat("Sex", c("Male", "Female"))
 arms <- gen_grp("Treatment", c("SAR1234", "ABC","Placebo"))
@@ -54,5 +67,8 @@ part_aat <- mtx_num(aaat, arms)
 part_cat <- mtx_cat(bmi, arms)
 part_sex <- mtx_cat(sex, arms)
 part_faatchg <- mtx_chg(faat_chg, arms)
-col_groups <- mtx_grp(arms)
-gen_mtx(part_num, part_aat, part_cat,part_sex, part_faatchg,col_groups = col_groups)
+part_list <- mtx_list(pt, arms)
+col_groups <- mtx_grp(arms, "n_title")
+gen_mtx(
+  col_groups, part_list, part_num, part_aat, part_cat, part_sex, part_faatchg
+)

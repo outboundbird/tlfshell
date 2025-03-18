@@ -1,6 +1,5 @@
 numeric_fmt  <- "##.##"
-count_fmt <- "##"
-pct_fmt <- "##.##"
+count_fmt <- "## (##.##%)"
 blanks <- ""
 pval <- "#.###"
 ci95 <- "##.##: ##.##"

@@ -23,5 +23,3 @@ gen_chg <- function(varname, ref_grp, group) {
 
 grp <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 gen_chg("Change from baseline", "SAR1234", grp)
-
-
