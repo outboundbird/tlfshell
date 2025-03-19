@@ -1,5 +1,5 @@
 ---
-title: "my-vignette"
+title: "Generate mock tables"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{my-vignette}
@@ -17,3 +17,30 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(tlfshell)
 ```
+
+# Temmplates
+
+# User-defined table content
+
+## Generate listing tables
+### Plain listing table
+The following example generates a plain listing table for 5 patients.
+
+```{r}
+lst <- gen_plain_list("Patient", 5,
+  num_cols = c("Age", "Weight", "Height"),
+  cat_cols = c("Sex", "BMI"), date_cols = c("DOB", "Visit")
+)
+
+mtx_plain_list(list)
+```
+### Summary and listing table
+
+
+
+
+
+## Generate descriptive tables
+
+
+## Generate PD tables
