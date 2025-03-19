@@ -64,9 +64,8 @@ section_list <- function(varname, n, group) {
 #' This function generates a section group based on the provided variable name,
 #' its levels, and optional units.
 #'
-#' @param varname A character string specifying the name of the group.
+#' @param group A group object.
 #' @param var_levels A vector specifying the levels of the group.
-#' @param units An optional character string specifying the units of the variable. Default is `NULL`.
 #' @param select An optional vector specifying a display options under group header. Options are `c("n_title","unit")` to disaply number of subjects in each group or the units of groups. Default is `NULL`.
 #'
 #' @return A section group object (details depend on implementation).
@@ -74,9 +73,9 @@ section_list <- function(varname, n, group) {
 #'
 #' @examples
 #' # Example usage:
-#' section_grp("Treatment", c("SAR1234", "ABC", "Placebo"),
-#'   units = rep("ng", 3), select = "unit"
-#' )
+#' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
+#' section_grp(arms, select = "n_title")
+#' section_grp(arms, select = "unit")
 section_grp <- function(group, select = NULL) {
   mtx_grp(group, select = select)
 }
