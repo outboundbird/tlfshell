@@ -2,7 +2,6 @@
 Automatically generate TLF tables and figures
 https://pharmaverse.org/e2eclinical/tlg/
 
-[TLG catalog](https://insightsengineering.github.io/tlg-catalog/stable/tables/lab-results/lbt01.html)
 ## to do
 ### Listing
 - biomarker listing
@@ -33,3 +32,10 @@ template.chg()
 # listing table
 template.lst()
 ```
+
+## Other R packages
+- [R for Clinical Study Reports and Submission](https://r4csr.org/)
+- [`tidytlg`](https://pharmaverse.github.io/tidytlg/main/articles/tidytlg.html)
+- [TLG Catalog](https://insightsengineering.github.io/tlg-catalog/stable/)
+- [Pharmaverse](https://pharmaverse.org/e2eclinical/tlg/)
+- [Tables in Clinical Trials with R](https://rconsortium.github.io/rtrs-wg/)
