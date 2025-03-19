@@ -53,14 +53,58 @@ mtx_list <- function(list, group){
   cbind(list_rows, list_cols)
 }
 
-mtx_grp <- function(group, select=NULL) {
-  group_attr <- get_attr(group)
-  subline <- group_attr(select)
-  rbind(c(blanks, levels(group)),
-        c(blanks, subline))
+#' Generate a Plain List Matrix
+#'
+#' This function takes a listing object and converts it into a plain matrix format.
+#'
+#' @param list A listing object to be converted into a matrix.
+#' @return A matrix representation of the input list.
+#' @examples
+#' # Example usage:
+#' lst <- gen_plain_list("Patient", 5,
+#'   num_cols = c("Age", "Weight", "Height"),
+#'   cat_cols = c("Sex", "BMI"), date_cols = c("DOB", "Visit")
+#' )
+#' mtx_plain_list(lst)
+#' @export
+mtx_plain_list <- function(list) {
+  list_attr <- get_attr(list)
+  list_rows <- c(list_attr("id"))
+  col_names <- c(list_attr("names"), list_attr("col_names"))
+  cols <- list( # keep the same order as in gen_plain_list
+    list_attr("num_txt"), list_attr("cat_txt"), list_attr("date_txt")
+  )
+
+  list_cols <- Filter(length, cols) %>%
+    do.call(cbind, .)
+  mtx <- cbind(list_rows, list_cols)
+  colnames(mtx) <- col_names
+  mtx
 }
 
-gen_mtx <- function(..., col_groups =NULL) {
+
+
+mtx_grp <- function(group, select = NULL) {
+  group_attr <- get_attr(group)
+  subline <- group_attr(select)
+  rbind(
+    c(blanks, levels(group)),
+    c(blanks, subline)
+  )
+}
+
+
+
+#' Generate a Table Matrix
+#'
+#' This function generates a matrix based on the provided aruments.
+#'
+#' @param ... sections to be put in the table
+#' @param col_groups A vector or list specifying header group. Defalt is `NULL`, which will leave table header empty.
+#'
+#' @return A matrix object generated based on the input parameters.
+#' @export
+gen_mtx <- function(..., col_groups =NULL){
   rbind(...) %>%
     data.frame() %>%
     setNames(col_groups)
