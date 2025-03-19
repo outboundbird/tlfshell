@@ -59,15 +59,32 @@ section_list <- function(varname, n, group) {
 
 
 
-
+#' Create a Group Section
+#'
+#' This function generates a section group based on the provided variable name,
+#' its levels, and optional units.
+#'
+#' @param varname A character string specifying the name of the group.
+#' @param var_levels A vector specifying the levels of the group.
+#' @param units An optional character string specifying the units of the variable. Default is `NULL`.
+#' @param select An optional vector specifying a display options under group header. Options are `c("n_title","unit")` to disaply number of subjects in each group or the units of groups. Default is `NULL`.
+#'
+#' @return A section group object (details depend on implementation).
+#' @export
+#'
+#' @examples
+#' # Example usage:
+#' section_grp("Treatment", c("SAR1234", "ABC", "Placebo"),
+#'   units = rep("ng", 3), select = "unit"
+#' )
 section_grp <- function(group, select = NULL) {
   mtx_grp(group, select = select)
 }
 
 
-#' Create a Change from baseline Section
+#' Create a Change Section
 #'
-#' This function generates a section for comparing a variable across two time points.
+#' This function generates a section for comparing a variable across two time points or groups.
 #'
 #' @param varname A character string specifying the name of the variable to analyze.
 #' @param ref_grp A character string specifying the reference group for comparison.
