@@ -1,4 +1,5 @@
 numeric_fmt  <- "##.##"
+n_obs <- "##"
 count_fmt <- "## (##.##%)"
 blanks <- ""
 pval <- "#.###"
