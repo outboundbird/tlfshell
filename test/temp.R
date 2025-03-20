@@ -8,6 +8,7 @@ library(flextable)
 source("R/gen_num.R")
 source("R/get_attr.R")
 
+
 for(f in list.files("R",   full.names = TRUE)) {print(f); source(f)}
 
 output <-   gen_mtx(
@@ -37,13 +38,21 @@ idx <- which(sapply(seq(2, nrow(output$body$dataset)),
 ))
 
 output |>
-    hline(idx) |>
-    flextable::border( i = 1, border.bottom = fp_border_default(width = 1, 
-            color = "#000000"), border.top = fp_border_default(width = 1, 
-            color = "#000000"), border.left = fp_border_default(width = 0), 
-            border.right = fp_border_default(width = 0), part = "header") |>
-
-     flextable::fontsize(size = 10, part = "all") |>
+    flextable::hline(idx) |>
+    flextable::border(
+         i = 1,
+        border.bottom = fp_border_default(
+            width = 1, 
+            color = "#000000"
+        ),
+        border.top = fp_border_default(
+            width = 1, 
+            color = "#000000"
+        ),
+        border.left = fp_border_default(width = 0), 
+        border.right = fp_border_default(width = 0), part = "header"
+    ) |>
+    flextable::fontsize(size = 10, part = "all") |>
     flextable::fontsize(size = 9, part = "footer")  |>
     flextable::font(fontname = "Arial Narrow", part = "footer") |>
     flextable::font(fontname = "Times New Roman", part = "body")
