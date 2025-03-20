@@ -1,5 +1,5 @@
 ---
-title: "Generate mock tables"
+title: "my-vignette"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{my-vignette}
