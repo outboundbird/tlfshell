@@ -111,21 +111,21 @@ gen_mtx <- function(..., col_groups =NULL){
 }
 
 # example
-arms <- gen_grp("Treatment", c("SAR1234", "ABC","Placebo"))
-faat <- gen_num("fAAT")
-aaat <- gen_num("aAAT")
-pt <- gen_list("Patient", 3)
-bmi <- gen_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"))
-sex <- gen_cat("Sex", c("Male", "Female"))
-faat_chg <- gen_chg("Change from baseline to Week 12", "SAR1234", arms)
+# arms <- gen_grp("Treatment", c("SAR1234", "ABC","Placebo"))
+# faat <- gen_num("fAAT")
+# aaat <- gen_num("aAAT")
+# pt <- gen_list("Patient", 3)
+# bmi <- gen_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"))
+# sex <- gen_cat("Sex", c("Male", "Female"))
+# faat_chg <- gen_chg("Change from baseline to Week 12", "SAR1234", arms)
 
-part_num <- mtx_num(faat, arms)
-part_aat <- mtx_num(aaat, arms)
-part_cat <- mtx_cat(bmi, arms)
-part_sex <- mtx_cat(sex, arms)
-part_faatchg <- mtx_chg(faat_chg, arms)
-part_list <- mtx_list(pt, arms)
-col_groups <- mtx_grp(arms, "n_title")
-gen_mtx(
-  col_groups, part_list, part_num, part_aat, part_cat, part_sex, part_faatchg
-)
+# part_num <- mtx_num(faat, arms)
+# part_aat <- mtx_num(aaat, arms)
+# part_cat <- mtx_cat(bmi, arms)
+# part_sex <- mtx_cat(sex, arms)
+# part_faatchg <- mtx_chg(faat_chg, arms)
+# part_list <- mtx_list(pt, arms)
+# col_groups <- mtx_grp(arms, "n_title")
+# gen_mtx(
+#   col_groups, part_list, part_num, part_aat, part_cat, part_sex, part_faatchg
+# )

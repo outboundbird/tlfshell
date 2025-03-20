@@ -2,7 +2,7 @@
 % Please edit documentation in R/sections.R
 \name{section_chg}
 \alias{section_chg}
-\title{Create a Change from baseline Section}
+\title{Create a Change Section}
 \usage{
 section_chg(varname, ref_grp, group)
 }
@@ -17,7 +17,7 @@ section_chg(varname, ref_grp, group)
 A section of change from baseline.
 }
 \description{
-This function generates a section for comparing a variable across two time points.
+This function generates a section for comparing a variable across two time points or groups.
 }
 \examples{
 # Example usage:

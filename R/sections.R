@@ -65,7 +65,6 @@ section_list <- function(varname, n, group) {
 #' its levels, and optional units.
 #'
 #' @param group A group object.
-#' @param var_levels A vector specifying the levels of the group.
 #' @param select An optional vector specifying a display options under group header. Options are `c("n_title","unit")` to disaply number of subjects in each group or the units of groups. Default is `NULL`.
 #'
 #' @return A section group object (details depend on implementation).
