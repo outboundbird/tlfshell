@@ -15,7 +15,7 @@
 #' arms <- gen_grp("Treatment", c("SAR1234","ABC", "Placebo"), rep("mg", 2))
 #' attributes(arms)
 #' class(arms)
-gen_grp <- function(var_name = character(), var_levels = character(), units = NULL) {
+gen_grp <- function(var_name, var_levels, units = NULL) {
   if (is.null(units)) {
     units <- rep("", length(var_levels))
   }
