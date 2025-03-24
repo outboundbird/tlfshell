@@ -84,8 +84,12 @@ mtx_plain_list <- function(list) {
 
 
 
+
 mtx_grp <- function(group, select = NULL) {
   group_attr <- get_attr(group)
+  if(is.null(select)){
+    return(c(blanks, levels(group)))
+  }
   subline <- group_attr(select)
   rbind(
     c(blanks, levels(group)),
