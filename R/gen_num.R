@@ -3,13 +3,15 @@ gen_num <- function(var_name = "Biomarker") {
   structure(
     var_name,
     names = var_name,
-    summary = c("N", "Mean (SD)", "Median", "Q1:Q3", "Min: Max"),
+    summary = c("N", "Mean (SD)", "Median", "Q1:Q3", "Min: Max", "CV%","GeoMean"),
     table_txt = c(
       n_obs,
       mean.sd,
       numeric_fmt,
       ci95,
-      ci95
+      ci95,
+      numeric_fmt,
+      numeric_fmt
     ),
     type = "numeric"
   )
