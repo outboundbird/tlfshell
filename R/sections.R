@@ -27,6 +27,7 @@ section_num <- function(varname, group) {
 #'
 #' @return A structured section for the categorical variable.
 #' @examples
+#' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"), arms)
 #' section_cat("Sex", c("Male", "Female"), arms)
 #' @export
@@ -50,8 +51,8 @@ section_cat <- function(varname, var_levels, group) {
 #'
 #' @examples
 #' # generate listing for 3 sections for trial arm groups
+#' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_list("Patient", 3, arms)
-#' section_list("example_var", 5, group = c("A", "B", "C"))
 section_list <- function(varname, n, group) {
   var <- gen_list(varname, n)
   mtx_list(var, group)
@@ -93,6 +94,7 @@ section_grp <- function(group, select = NULL) {
 #'
 #' @examples
 #' # Example usage:
+#' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_chg("Change from baseline to Week 12", "SAR1234", arms)
 section_chg <- function(varname, ref_grp, group) {
   var <- gen_chg(varname, ref_grp, group)

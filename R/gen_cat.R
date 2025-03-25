@@ -6,7 +6,7 @@
 #' @param var_levels A vector of levels for the categorical variable.
 #'
 #' @return A categorical variable with the specified levels.
-#'
+#' @export
 #' @examples
 #' gen_cat("gender", c("male", "female"))
 #' bmi <- gen_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"))

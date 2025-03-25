@@ -72,3 +72,14 @@ idx <- which(sapply(seq(2, nrow(output$body$dataset)),
     flextable::font(fontname = "Times New Roman", part = "body")
 
 save_as_docx(output, "Individual and summary of serum urea concentration.docx", path = "test.docx")
+
+usethis::use_package("magrittr")
+devtools::check()
+devtools::check(manual = F)
+devtools::test()
+# clean and install
+devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))
+devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))
+
+# document
+devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))

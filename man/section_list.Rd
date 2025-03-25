@@ -22,6 +22,6 @@ number of subjects, and group information.
 }
 \examples{
 # generate listing for 3 sections for trial arm groups
+arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 section_list("Patient", 3, arms)
-section_list("example_var", 5, group = c("A", "B", "C"))
 }

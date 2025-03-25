@@ -9,6 +9,7 @@
 #' @param group A group object.
 #' @importFrom magrittr %>%
 #' @return A variable representing the change from baseline.
+#' @export
 #' @examples
 #' # Example usage:
 #' grp <- gen_grp("Treatment", c("SAR1234", "Placebo"))

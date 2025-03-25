@@ -20,6 +20,7 @@ A structured section for the categorical variable.
 This function generates a section for categorical variables in a report or analysis.
 }
 \examples{
+arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 section_cat("BMI", c("Underweight", "Normal", "Overweight", "Obese"), arms)
 section_cat("Sex", c("Male", "Female"), arms)
 }

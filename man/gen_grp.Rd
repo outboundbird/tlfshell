@@ -4,7 +4,7 @@
 \alias{gen_grp}
 \title{Generate Group Variable}
 \usage{
-gen_grp(var_name = character(), var_levels = character(), units = NULL)
+gen_grp(var_name, var_levels, units = NULL)
 }
 \arguments{
 \item{var_name}{A character vector specifying the name(s) of the variable(s).}

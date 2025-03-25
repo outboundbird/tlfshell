@@ -11,6 +11,8 @@ gen_list <- function(var_name = "Patient", n) {
 
 gen_list("Patient", 3)
 
+#' Generate a Plain List Object
+#' @export
 gen_plain_list <- function(
     var_name = "Patient", n, num_cols = NULL, cat_cols = NULL, date_cols = NULL) { # nolint
   col_num <- length(num_cols)

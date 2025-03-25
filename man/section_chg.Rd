@@ -21,5 +21,6 @@ This function generates a section for comparing a variable across two time point
 }
 \examples{
 # Example usage:
+arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 section_chg("Change from baseline to Week 12", "SAR1234", arms)
 }
