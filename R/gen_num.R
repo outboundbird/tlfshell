@@ -17,7 +17,7 @@ gen_num <- function(var_name = "Biomarker", extra_setup = list(fmt = NULL, param
   )
 
   sum_params <- switch(as.character(extra),
-    `1` = basic_fmts,
+    `1` = basic_params,
     `2` = c(basic_params, extra_params),
     "Invalid extra argument. Must be TRUE or FALSE."
   )
