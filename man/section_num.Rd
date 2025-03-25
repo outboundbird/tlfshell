@@ -4,7 +4,7 @@
 \alias{section_num}
 \title{Generate Numeric Section}
 \usage{
-section_num(varname, group)
+section_num(varname, group, extra_setups = list(params = NULL, fmt = NULL))
 }
 \arguments{
 \item{varname}{A character string representing the variable name.}

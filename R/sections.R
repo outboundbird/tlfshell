@@ -11,8 +11,10 @@
 #' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_num("fAAT", arms)
 #' @export
-section_num <- function(varname, group) {
-  var <- gen_num(varname)
+section_num <- function(
+    varname, group,
+    extra_setups = list(params = NULL, fmt = NULL)) {
+  var <- gen_num(varname, extra_setup = extra_setups)
   mtx_num(var, group)
 }
 
