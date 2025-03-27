@@ -16,12 +16,11 @@
 #' gen_chg("Change from baseline", "SAR1234", grp)
 gen_chg <- function(varname = "Change from baseline", ref_grp = character(), group) { # nolint
   stopifnot(class(group) == "group")
-  ref <- ref_grp
-  chg_summary <- c("N", "LS Mean (SE)", "95% CI")
-  other_groups <- levels(group)[levels(group) != ref]
+  chg_summary <- c("N", "Mean (SD)", "LS Mean (95% CI)")
+  other_groups <- levels(group)[levels(group) != ref_grp]
 
   chg_compare_l <- lapply(other_groups, function(x) {
-    c(paste0("LS Mean difference (SE) vs. ", x), "95% CI", "p-value", blanks)
+    c(paste0("LS Mean difference ",x ," vs. ", ref_grp), "95% CI", "p-value", blanks)
   })
 
   chg_compare <- do.call(c, chg_compare_l) %>%
@@ -38,9 +37,12 @@ gen_chg <- function(varname = "Change from baseline", ref_grp = character(), gro
     names = varname,
     summary = c(chg_summary, blanks, chg_compare),
     table_txt = c(
-      n_obs, mean.sd, ci95, blanks,
+      n_obs, mean.sd, mean.sd, blanks,
       chg_compare_txt
     ),
+    ref_grp = ref_grp,
+    compare_grp = other_groups,
     type = "numeric"
   )
 }
+
