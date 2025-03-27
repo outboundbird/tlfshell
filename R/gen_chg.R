@@ -38,7 +38,7 @@ gen_chg <- function(varname = "Change from baseline", ref_grp = character(), gro
     names = varname,
     summary = c(chg_summary, blanks, chg_compare),
     table_txt = c(
-      count_fmt, mean.sd, ci95, blanks,
+      n_obs, mean.sd, ci95, blanks,
       chg_compare_txt
     ),
     type = "numeric"
