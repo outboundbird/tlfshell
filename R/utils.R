@@ -47,3 +47,10 @@ get_kwargs <- function(kwarg, kwargs, default = NULL) {
   }
   default
 }
+
+
+rm_empty <- function(x) {
+  x[x != ""]
+}
+
+rm_empty(c("A",""))
