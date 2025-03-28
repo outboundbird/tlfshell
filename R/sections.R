@@ -6,10 +6,12 @@
 #'
 #' @param varname A character string representing the variable name.
 #' @param group A group object.
+#' @param extra_setups A list object specifiying the extra rows to be generated. `list(params = NULL, fmt=NULL)` `params` specify the name of the parameter, and `fmt` specify the format of the parameter. These params will be passed to lower level functions. #nolint
 #' @return section content for numeric variables
 #' @examples
 #' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_num("fAAT", arms)
+#' section_num("Age", arms, extra_setups = list(parmas = c("Geometric Mean", "CV%"), fmt = c(numeric_fmt, numeric_fmt)))
 #' @export
 section_num <- function(
     varname, group,
