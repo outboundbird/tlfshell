@@ -32,9 +32,12 @@ mtx_cat <- function(var, group) {
   cbind(vars_rows, var_cols)
 }
 
+#' Generate a Change from Baseline Matrix
 mtx_chg <- function(chg, group) {
   chg_attr <- get_attr(chg)
   ref_grp <- chg_attr("ref_grp")
+  comparisons <- chg_attr("comparison") %>%
+    rm_empty()
   chg_rows <- c(chg_attr("names"), chg_attr("summary"))
   chg_cols <- matrix(
     rep(c(blanks, chg_attr("table_txt")), nlevels(group)),
@@ -43,14 +46,15 @@ mtx_chg <- function(chg, group) {
   mtx <- cbind(chg_rows, chg_cols) %>%
     as.matrix() %>%
     magrittr::set_colnames(c("", levels(group)))
-  mtx[6:8, ref_grp] <- "-"
+  idx <- which(mtx[, 1] %in% comparisons)
+  mtx[idx, ref_grp] <- "-"
   mtx
 }
 
-#  group <- gen_grp("Treatment", c("SAR1234", "Placebo"))
-#  chg <- gen_chg("Change from baseline", "SAR1234", grp)
-#  mtx_chg(chg, group)
-# section_chg("test", "Placebo", group)
+ group <- gen_grp("Treatment", c("SAR1234", "ABD", "Placebo"))
+ chg <- gen_chg("Change from baseline", "SAR1234", group)
+ mtx_chg(chg, group)
+ section_chg("test", "Placebo", group)
 
 mtx_list <- function(list, group){
   list_attr <- get_attr(list)

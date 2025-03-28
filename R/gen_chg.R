@@ -15,7 +15,8 @@
 #' grp <- gen_grp("Treatment", c("SAR1234", "Placebo"))
 #' gen_chg("Change from baseline", "SAR1234", grp)
 gen_chg <- function(varname = "Change from baseline", ref_grp = character(), group) { # nolint
-  stopifnot(class(group) == "group")
+  stopifnot("group must be a group object" = class(group) == "group")
+  stopifnot("Reference group not found" = ref_grp %in% levels(group))
   chg_summary <- c("N", "Mean (SD)", "LS Mean (95% CI)")
   other_groups <- levels(group)[levels(group) != ref_grp]
 
@@ -36,6 +37,7 @@ gen_chg <- function(varname = "Change from baseline", ref_grp = character(), gro
     varname,
     names = varname,
     summary = c(chg_summary, blanks, chg_compare),
+    comparison = chg_compare,
     table_txt = c(
       n_obs, mean.sd, mean.sd, blanks,
       chg_compare_txt
