@@ -1,15 +1,15 @@
 # generate listing
-gen_list <- function(var_name = "Patient", n) {
+gen_list <- function(var_name = "Patient", n, fmt) {
   structure(
     var_name,
     names = var_name,
     id = rep(subjid, n),
-    table_txt = rep(numeric_fmt, n),
+    table_txt = rep(fmt, n),
     type = "listing"
   )
 }
 
-gen_list("Patient", 3)
+# gen_list("Patient", 3)
 
 #' Generate a Plain List Object
 #' @export
