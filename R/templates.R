@@ -21,7 +21,7 @@ template.chg <- function() {
   arms <- gen_grp("Treatment", c("SAR123", "SAR345", "Placebo"))
   bsln <- section_num("Baseline", arms)
   wk24 <- section_num("Week 24", arms)
-  chg <- section_chg("Change from Baseline to Week 24", "SAR1234", arms)
+  chg <- section_chg("Change from Baseline to Week 24", "Placebo", arms)
 
   gen_mtx(
     section_grp(arms, "n_title"),
