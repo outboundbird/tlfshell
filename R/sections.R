@@ -57,8 +57,8 @@ section_cat <- function(varname, var_levels, group) {
 #' # generate listing for 3 sections for trial arm groups
 #' arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 #' section_list("Patient", 3, arms)
-section_list <- function(varname, n, group) {
-  var <- gen_list(varname, n)
+section_list <- function(varname, n, group, fmt = numeric_fmt) {
+  var <- gen_list(varname, n, fmt)
   mtx_list(var, group)
 }
 
