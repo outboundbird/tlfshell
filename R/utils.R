@@ -49,8 +49,16 @@ get_kwargs <- function(kwarg, kwargs, default = NULL) {
 }
 
 
+#' Remove Empty Elements from a Vector
+#'
+#' This function removes empty elements (e.g., `""`) from a character vector.
+#'
+#' @param x A character vector from which empty elements should be removed.
+#' @return A character vector with empty elements removed.
+#' @examples
+#' rm_empty(c("a", "", "b", ""))
+#' # [1] "a" "b"
+#' @export
 rm_empty <- function(x) {
   x[x != ""]
 }
-
-rm_empty(c("A",""))
