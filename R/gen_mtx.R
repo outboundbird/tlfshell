@@ -33,6 +33,7 @@ mtx_cat <- function(var, group) {
 }
 
 #' Generate a Change from Baseline Matrix
+#' @importFrom magrittr  %>%
 mtx_chg <- function(chg, group) {
   chg_attr <- get_attr(chg)
   ref_grp <- chg_attr("ref_grp")
@@ -51,11 +52,19 @@ mtx_chg <- function(chg, group) {
   mtx
 }
 
- group <- gen_grp("Treatment", c("SAR1234", "ABD", "Placebo"))
- chg <- gen_chg("Change from baseline", "SAR1234", group)
- mtx_chg(chg, group)
- section_chg("test", "Placebo", group)
+#  group <- gen_grp("Treatment", c("SAR1234", "ABD", "Placebo"))
+#  chg <- gen_chg("Change from baseline", "SAR1234", group)
+#  mtx_chg(chg, group)
+#  section_chg("test", "Placebo", group)
 
+#' Generate a Matrix List
+#'
+#' This function creates a matrix list based on the provided input list and grouping variable.
+#'
+#' @param list A list containing the data to be processed.
+#' @param group A grouping variable used to organize the data in the list.
+#'
+#' @return A list of matrices organized by the specified grouping.
 mtx_list <- function(list, group){
   list_attr <- get_attr(list)
   list_rows <- c(list_attr("names"), list_attr("id"))
@@ -66,10 +75,12 @@ mtx_list <- function(list, group){
   cbind(list_rows, list_cols)
 }
 
+
+
 #' Generate a Plain List Matrix
 #'
 #' This function takes a listing object and converts it into a plain matrix format.
-#'
+#' @importFrom magrittr  %>%
 #' @param list A listing object to be converted into a matrix.
 #' @return A matrix representation of the input list.
 #' @examples
