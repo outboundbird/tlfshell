@@ -4,7 +4,7 @@
 \alias{section_list}
 \title{Generate a listing sections.}
 \usage{
-section_list(varname, n, group)
+section_list(varname, n, group, fmt = numeric_fmt)
 }
 \arguments{
 \item{varname}{A character string representing the name of the variable.}

@@ -10,6 +10,8 @@ section_num(varname, group, extra_setups = list(params = NULL, fmt = NULL))
 \item{varname}{A character string representing the variable name.}
 
 \item{group}{A group object.}
+
+\item{extra_setups}{A list object specifiying the extra rows to be generated. \code{list(params = NULL, fmt=NULL)} \code{params} specify the name of the parameter, and \code{fmt} specify the format of the parameter. These params will be passed to lower level functions. #nolint}
 }
 \value{
 section content for numeric variables
@@ -20,4 +22,5 @@ This function generates a section of numeric variables based on the provided var
 \examples{
 arms <- gen_grp("Treatment", c("SAR1234", "ABC", "Placebo"))
 section_num("fAAT", arms)
+section_num("Age", arms, extra_setups = list(parmas = c("Geometric Mean", "CV\%"), fmt = c(numeric_fmt, numeric_fmt)))
 }
