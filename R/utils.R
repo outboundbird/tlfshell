@@ -29,7 +29,7 @@ retrive <- function(x, default = "") {
 #' @return value of either matched argument or default value if no match.
 #' @export
 #' @examples
-#' # foo <- function(...){
+#' foo <- function(...){
 #'   params <- list(...)
 #'   c <- get_kwargs("c", params, NULL)
 #'   d <- get_kwargs("d", params, NULL)
