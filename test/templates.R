@@ -1,3 +1,4 @@
+# source("R/utils.R")
 # demo
 
 template.demo <- function() {
