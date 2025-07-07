@@ -117,7 +117,8 @@ mtx_grp <- function(group, select = NULL) {
   subline <- group_attr(select)
   rbind(
     c(blanks, levels(group)),
-    c(blanks, rep(subline, nlevels(group)))
+    c(blanks, subline)
+    # c(blanks, rep(subline, nlevels(group)))
   )
 }
 

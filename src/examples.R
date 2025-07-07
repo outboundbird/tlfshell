@@ -20,6 +20,32 @@ ch50_d8_14.pstPP <- section_num(
 )
 ch50_d8_14.pstsoi <- section_num("CH50 Week 2 D8-D14 1hr post-intervention ", arms)
 
+ch50_2w <- gen_mtx(
+  section_grp(arms, "n_title"),
+  ch50_d1pre,
+  ch50_d1pst1,
+  ch50_d2_7.prePP,
+  ch50_d2_7.pstPP,
+  ch50_d2_7.pstsoi,
+  ch50_d8_14.prePP,
+  ch50_d8_14.pstPP,
+  ch50_d8_14.pstsoi
+) %>%
+data.frame()
+
+
+
+table_ch50_2w <- flextable(ch50_2w) %>%
+  delete_rows(1, part = "header") %>%
+  add_header_row(values = header_row, colwidths = c(1, 2, 2)) %>%
+  theme_booktabs() %>%
+  empty_blanks() %>%
+  hline(2) %>%
+  hline(1, part = "header") %>%
+  add_footer_lines("For the plasmapheresis performed in W1-W2 (BIVV020 + SOC arm only), complement classical pathway activity samples (CP and CH50) were collected before (within 1 hour) and after each plasmapheresis session (within 1 hour after PP; or specifically ≤1 h before BIVV020 IV supplemental dose administration) and at 1 h after BIVV020 supplemental dose start of infusion (±10 min). ; LLOQ – lower limit of quantification") %>%
+  autofit() %>%
+  text_styler()
+
 # listing for the first two weeks
 visits <-  c(
   "D1 Pre-dose",
@@ -41,8 +67,9 @@ listing_wk12 <- mtx_plain_list(lst) %>%
   data.frame(check.names = FALSE) %>%
   select(c("Patient", "Treatment", "Visit Date time"), everything())
 
-table_wk12 <- flextable(listing_wk12) %>%
+list_wk12 <- flextable(listing_wk12) %>%
 add_footer_lines("LLOQ - lower limit of quantification. Detection limit xx Eq/mL") %>%
+  # autofit() %>%
   text_styler()
 
 
@@ -56,30 +83,6 @@ ch50_d337 <- section_num("CH50 Week 49", arms)
 ch50_ed <- section_num("CH50 End of Study", arms)
 ch50_fu <- section_num("CH50 Follow-up", arms)
 
-ch50_2w <- gen_mtx(
-  section_grp(arms, "n_title"),
-  ch50_d1pre,
-  ch50_d1pst1,
-  ch50_d2_7.prePP,
-  ch50_d2_7.pstPP,
-  ch50_d2_7.pstsoi,
-  ch50_d8_14.prePP,
-  ch50_d8_14.pstPP,
-  ch50_d8_14.pstsoi
-) %>%
-data.frame()
-
-table_ch50_2w <- flextable(ch50_2w) %>%
-  delete_rows(1, part = "header") %>%
-  add_header_row(values = header_row, colwidths = c(1, 2, 2)) %>%
-  theme_booktabs() %>%
-  empty_blanks() %>%
-  hline(2) %>%
-  hline(1, part = "header") %>%
-  add_footer_lines("For the plasmapheresis performed in W1-W2 (BIVV020 + SOC arm only), complement classical pathway activity samples (CP and CH50) were collected before (within 1 hour) and after each plasmapheresis session (within 1 hour after PP; or specifically ≤1 h before BIVV020 IV supplemental dose administration) and at 1 h after BIVV020 supplemental dose start of infusion (±10 min). ; LLOQ – lower limit of quantification") %>%
-  autofit() %>%
-  text_styler()
-
 ch50_fu <- gen_mtx(
   section_grp(arms, "n_title"),
   ch50_d1pre,
@@ -89,8 +92,8 @@ ch50_fu <- gen_mtx(
   ch50_d253,
   ch50_d337,
   ch50_ed
-)%>%
-data.frame()
+) %>%
+  data.frame()
 
 table_ch50_fu <- flextable(ch50_fu) %>%
   delete_rows(1, part = "header") %>%
@@ -99,7 +102,7 @@ table_ch50_fu <- flextable(ch50_fu) %>%
   empty_blanks() %>%
   hline(2) %>%
   hline(1, part = "header") %>%
-  add_footer_lines("For the plasmapheresis performed in W1-W2 (BIVV020 + SOC arm only), complement classical pathway activity samples (CP and CH50) were collected before (within 1 hour) and after each plasmapheresis session (within 1 hour after PP; or specifically ≤1 h before BIVV020 IV supplemental dose administration) and at 1 h after BIVV020 supplemental dose start of infusion (±10 min). ; LLOQ – lower limit of quantification") %>%
+  add_footer_lines("For the plasmapheresis performed in W1-W2 (BIVV020 + SOC arm only), complement classical pathway activity samples (CP and CH50) were collected before (within 1 hour) and after each plasmapheresis session (within 1 hour after PP; or specifically ≤1 h before BIVV020 IV supplemental dose administration) and at 1 h after BIVV020 supplemental dose start of infusion (±10 min). ; LLOQ - lower limit of quantification") %>% #nolint
   autofit() %>%
   text_styler()
 
@@ -125,6 +128,7 @@ tab_chg_2w <- flextable(chg_2w) %>%
   set_header_df(mapping = colhead, key = 'col_keys') %>%
   theme_booktabs() %>%
   empty_blanks() %>%
+  autofit() %>%
   add_footer_lines("Based on an ANCOVA model after adjusting baseline value. Values below detection limit were imputed with d/\U221A; ANCOVA = Analysis of Covariance, CI = Confidence Interval, LS = Least Squares, SD = Standard Deviation")  %>% #nolint
   # footnote(i=8*(1:5), j=1, ref_symbols = "\U002A",value = as_paragraph())
   text_styler()
@@ -146,9 +150,7 @@ tab_chg_fu <- flextable(chg_fu) %>%
   autofit() %>%
   text_styler()
 
-section_cat("DSA levels",c("MFI <1000", "1000<MFI<3000", "MFI>3000") , arms) %>% data.frame() %>%
-flextable() %>%
-autofit()
+
 
 # change in cohort A
 arms_a <- gen_grp("Treatment", c("BIV020+SOC", "SOC"))
@@ -191,6 +193,7 @@ tab_chg_2w_a <- flextable(chg_2w_a) %>%
   add_footer_lines("Values below detection limit were imputed with d/\U221A 2; due the small sample size the test between two groups are not provided.") %>% #nolint
   theme_booktabs() %>%
   empty_blanks() %>%
+  autofit() %>%
   text_styler()
 
 ch_fu_a <- gen_mtx(
@@ -209,7 +212,7 @@ tab_chg_fu <- flextable(ch_fu_a) %>%
 
 
 save_as_docx(
-  `CH50 (Week 1-2)` = table_wk12,
+  `CH50 (Week 1-2)` = list_wk12,
   `CH50 (Week 4-49)` = table_ch50_fu,
   # `CP (Week 1-2)` = table_cp_2w,
   # `CP (Week 4-49)` = table_cp_fu,

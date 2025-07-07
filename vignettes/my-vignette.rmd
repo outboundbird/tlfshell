@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, eval =F}
 library(tlfshell)
 ```
 
@@ -26,7 +26,7 @@ library(tlfshell)
 ### Plain listing table
 The following example generates a plain listing table for 5 patients.
 
-```{r}
+```{r, eval =F}
 lst <- gen_plain_list("Patient", 5,
   num_cols = c("Age", "Weight", "Height"),
   cat_cols = c("Sex", "BMI"), date_cols = c("DOB", "Visit")

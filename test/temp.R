@@ -77,9 +77,7 @@ usethis::use_package("magrittr")
 devtools::check()
 devtools::check(manual = F)
 devtools::test()
-# clean and install
-devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))
-devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))
-
-# document
+# load all functions
+devtools::load_all()
+# clean, document and install
 devtools::document(roclets = c("rd", "collate", "namespace", "vignette"))
